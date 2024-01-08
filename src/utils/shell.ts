@@ -24,6 +24,10 @@ export const shell = async (
       setHistory(
         `shell: command not found: ${args[0]}. Try 'help' to get started.`,
       );
+    else if (langSetting === 'el')
+      setHistory(
+        `shell: δεν βρέθηκε η εντολή: ${args[0]}. Δοκιμάστε την εντολή 'help' για να ξεκινήσετε.`,
+      );
   } else {
     const output = await bin[args[0]](args.slice(1));
     setHistory(output);
