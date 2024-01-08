@@ -2,7 +2,7 @@
   "readmeUrl": "https://raw.githubusercontent.com/GyllenhaalSP/GyllenhaalSP/main/README.md",
   "personalUrl": "https://www.dalonsolaz.dev/index/",
   "defaultLanguage": "es",
-  "title": "dalonsolaz",
+  "title": "Portfolio - Daniel Alonso Lázaro",
   "name": "Daniel Alonso Lázaro",
   "ascii": "Daniel\nAlonso\nLázaro",
   "social": {
@@ -13,8 +13,9 @@
   "ps1_hostname": "dalonsolaz",
   "ps1_username_en": "visitor",
   "ps1_username_es": "visitante",
+  "ps1_username_el": "επισκέπτης",
   "repo": "https://github.com/GyllenhaalSP/Portfolio",
-  "resume_url": "https://www.dalonsolaz.dev/cv.pdf",
+  "resume_url": "https://www.dalonsolaz.dev/cv.pdf#zoom=150",
   "colors": {
     "light": {
       "background": "#282C34",
