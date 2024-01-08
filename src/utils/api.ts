@@ -1,5 +1,6 @@
 import axios from 'axios';
 import config from '../../config.json';
+import { langSetting } from './bin';
 
 export const getProjects = async () => {
   const { data } = await axios.get(
@@ -15,7 +16,7 @@ export const getReadme = async () => {
 
 export const getWeather = async (city: string) => {
   try {
-    const { data } = await axios.get(`https://wttr.in/${city}?ATm`);
+    const { data } = await axios.get(`https://wttr.in/${city}?ATmF&lang=${langSetting}`);
     return data;
   } catch (error) {
     return error;
