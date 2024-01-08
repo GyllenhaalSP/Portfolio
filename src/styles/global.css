@@ -5,7 +5,7 @@
 @font-face {
   font-family: 'Hack';
   src: url(../../public/assets/fonts/Hack-NF.ttf);
-  display: swap;
+  font-display: swap;
 }
 
 * {
@@ -38,4 +38,78 @@ div#__next > div {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #ff8037;
+}
+
+@media only screen and (hover: none) and (pointer: coarse) {
+  input:focus {
+    font-size: 16px;
+  }
+  label[for="prompt"] {
+    min-width: 116px;
+  }
+}
+
+@media (max-width: 320px) {
+  #banner {
+    font-size: 6px;
+  }
+
+  input:focus {
+    transform: scale(0.375) translateY(-17px);
+    transform-origin: left center;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 480px) {
+  #banner {
+    font-size: 7px;
+  }
+
+  input:focus {
+    transform: scale(0.4375) translateY(-14px);
+    transform-origin: left center;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 640px) {
+  #banner {
+    font-size: 10px;
+  }
+
+  input:focus {
+      transform: scale(0.625) translateY(-14px);
+      transform-origin: left center;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1280px) {
+  #banner {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1440px) {
+  #banner {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1441px) and (max-width: 2550px) {
+  #banner {
+    font-size: 16px;
+  }
+
+  label[for="prompt"] {
+      font-size: 20px;
+  }
+}
+
+@media (min-width: 2551px) {
+  #banner {
+    font-size: 18px;
+  }
+
+  label[for="prompt"] {
+      font-size: 24px;
+  }
 }
