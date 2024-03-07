@@ -9,10 +9,10 @@ export const Ps1 = () => {
         {langSetting === 'es'
           ? config.ps1_username_es
           : langSetting === 'en'
-          ? config.ps1_username_en
-          : langSetting === 'el'
-          ? config.ps1_username_el
-          : config.ps1_username_es}
+            ? config.ps1_username_en
+            : langSetting === 'el'
+              ? config.ps1_username_el
+              : config.ps1_username_es}
       </span>
       <span className="text-light-gray dark:text-dark-gray">@</span>
       <span className="text-light-green dark:text-dark-green">

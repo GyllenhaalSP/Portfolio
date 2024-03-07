@@ -55,11 +55,11 @@ Type 'sumfetch' to display summary.
 
 //change language
 export const lang = async (args: string[]): Promise<string> => {
-  if ((args.length === 0 || args[0] === "") && langSetting === 'es') {
+  if ((args.length === 0 || args[0] === '') && langSetting === 'es') {
     return `Uso: lang [idioma]. Ejemplo: lang en`;
-  } else if ((args.length === 0 || args[0] === "") && langSetting === 'en') {
+  } else if ((args.length === 0 || args[0] === '') && langSetting === 'en') {
     return `Usage: lang [language]. Example: lang es`;
-  } else if ((args.length === 0 || args[0] === "") && langSetting === 'el') {
+  } else if ((args.length === 0 || args[0] === '') && langSetting === 'el') {
     return `Χρήση: lang [γλώσσα]. Παράδειγμα: lang es`;
   }
   if (args[0].toLowerCase() === langSetting) {
@@ -79,7 +79,7 @@ export const lang = async (args: string[]): Promise<string> => {
     langSetting = 'en';
     return `Changing language to english...\n
     ${banner()}`;
-  }else if (args[0].toLowerCase() === 'el') {
+  } else if (args[0].toLowerCase() === 'el') {
     langSetting = 'el';
     return `Αλλαγή γλώσσας στα ελληνικά...\n
       ${banner()}`;
@@ -94,7 +94,7 @@ export const repo = async (args: string[]): Promise<string> => {
   } else if (langSetting === 'en') {
     return "Opening this website's GitHub repository...";
   } else if (langSetting === 'el') {
-    return "Άνοιγμα αποθετηρίου GitHub αυτής της ιστοσελίδας...";
+    return 'Άνοιγμα αποθετηρίου GitHub αυτής της ιστοσελίδας...';
   }
 };
 
@@ -234,11 +234,17 @@ export const bing = async (args: string[]): Promise<string> => {
   }
   window.open(`https://bing.com/search?q=${args.join(' ')}`);
   if (langSetting === 'es') {
-    return `¿En serio? ¿Quién usa hoy en día Bing para buscar cosas sobre '${args.join(' ')}' ...`;
+    return `¿En serio? ¿Quién usa hoy en día Bing para buscar cosas sobre '${args.join(
+      ' ',
+    )}' ...`;
   } else if (langSetting === 'en') {
-    return `Wow, really? Who uses Bing for searching about '${args.join(' ')}'?`;
+    return `Wow, really? Who uses Bing for searching about '${args.join(
+      ' ',
+    )}'?`;
   } else if (langSetting === 'el') {
-    return `Αλήθεια; Ποιος χρησιμοποιεί το Bing για να ψάξει για '${args.join(' ')}';`;
+    return `Αλήθεια; Ποιος χρησιμοποιεί το Bing για να ψάξει για '${args.join(
+      ' ',
+    )}';`;
   }
 };
 

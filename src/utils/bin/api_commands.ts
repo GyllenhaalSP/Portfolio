@@ -1,7 +1,7 @@
 // // List of commands that require API calls
-import { getProjects, getQuote, getReadme, getWeather } from "../api";
-import config from "../../../config.json";
-import { langSetting } from "./commands";
+import { getProjects, getQuote, getReadme, getWeather } from '../api';
+import config from '../../../config.json';
+import { langSetting } from './commands';
 
 export const projects = async (args: string[]): Promise<string> => {
   const projects = await getProjects();
@@ -25,7 +25,7 @@ export const projects = async (args: string[]): Promise<string> => {
           `<a class="text-light-blue dark:text-dark-blue underline" href="${repo.html_url}" target="_blank">${repo.name}</a> - '${repo.description}'`,
       )
       .join('\n')}`;
-  } else if (langSetting === 'el'){
+  } else if (langSetting === 'el') {
     return `Κάντε κλικ στο όνομα του αποθετηρίου για να μεταβείτε στο GitHub:\n\n${filteredProjects
       .map(
         (repo) =>
