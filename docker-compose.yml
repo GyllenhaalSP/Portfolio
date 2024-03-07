@@ -1,11 +1,11 @@
 version: "3.7"
 services:
   liveterm-dal:
-    image: "liveterm-dal:latest"
+    image: "gyllenhaal/liveterm-dal:latest"
     container_name: "liveterm"
     volumes:
       - ./src/:/home/node/app/src
     ports:
       - "7474:3000"
-    restart: always
+    restart: unless-stopped
     command: yarn start
