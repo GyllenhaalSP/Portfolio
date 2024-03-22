@@ -343,6 +343,80 @@ export const sudo = async (args?: string[]): Promise<string> => {
   }
 };
 
+interface Certificate {
+  shownName: string;
+  url: string;
+  category: string;
+  institution: string;
+  dateOfCompletion: Date;
+}
+
+const certificates: Certificate[] = [
+  {
+    shownName: 'Programación en .NET',
+    url: '/certs/cert-dalonsolaz-dotnet-tajamar.pdf',
+    category: 'Programación',
+    institution: 'Tajamar',
+    dateOfCompletion: new Date(2024, 2, 18),
+  },
+  {
+    shownName: 'Foundational C# with Microsoft',
+    url: '/certs/cert-dalonsolaz-foundational-csharp-microsoft.pdf',
+    category: 'Programación',
+    institution: 'Microsoft & FreeCodeCamp',
+    dateOfCompletion: new Date(2023, 11, 31),
+  },
+  {
+    shownName: 'Accesibilidad Web',
+    url: '/certs/cert-dalonsolaz-wcag-tajamar.pdf',
+    category: 'Accesibilidad',
+    institution: 'Tajamar',
+    dateOfCompletion: new Date(2024, 2, 20),
+  },
+  {
+    shownName: 'Python 101 for Data Science',
+    url: '/certs/cert-dalonsolaz-python-for-data-science-IBM.pdf',
+    category: 'Programación',
+    institution: 'IBM',
+    dateOfCompletion: new Date(2024, 1, 1),
+  },
+  {
+    shownName: 'Inglés - C1',
+    url: '/certs/cert-dalonsolaz-lengua-inglesa-british-council.pdf',
+    category: 'Idiomas',
+    institution: 'British Council',
+    dateOfCompletion: new Date(2017, 11, 27),
+  },
+];
+
+export const certs = async (args?: string[]): Promise<string> => {
+  const groupBy = certificates.reduce((acc, cert) => {
+    if (!acc[cert.category]) {
+      acc[cert.category] = [];
+    }
+    acc[cert.category].push(cert);
+    return acc;
+  }, {});
+
+  const groupedByCategory = Object.keys(groupBy).map((category) => {
+    let header =
+      groupBy[category].length === 1
+        ? `Certificado de ${category}`
+        : `Certificados de ${category}`;
+    let body = `<br>==============================<h2>${header}</h2>==============================<br><br>`;
+    body += groupBy[category]
+      .map(
+        (cert: Certificate) =>
+          `<a href="${cert.url}">${cert.shownName}</a>
+           <br>${`\t\t` + cert.institution} - ${cert.dateOfCompletion.toLocaleDateString()}<br>`,
+      )
+      .join('<br>');
+    return body;
+  });
+
+  return groupedByCategory.join('') + '<br>';
+};
+
 const bannerName = `<div id="banner">
    ██████████                         ███           ████        
   ░░███░░░░███                       ░░░           ░░███        
