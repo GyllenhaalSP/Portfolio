@@ -1,10 +1,10 @@
-FROM node:21.6.1 as base
+FROM node:21.6.1-bullseye-slim as base
 
 WORKDIR /home/node/app
 
 COPY package.json yarn.lock ./
 
-RUN yarn install
+RUN yarn install && yarn cache clean
 
 COPY . ./
 
