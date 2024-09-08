@@ -26,8 +26,8 @@ export const getWeather = async (city: string) => {
 };
 
 export const getQuote = async () => {
-  const { data } = await axios.get('https://api.quotable.io/random');
+  const { data } = await axios.get('/api/quote');
   return {
-    quote: `“${data.content}” — ${data.author}`,
+    quote: `${data[0].h}`,
   };
 };

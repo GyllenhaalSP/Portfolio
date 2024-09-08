@@ -18,7 +18,7 @@ export const web = async (args: string[]): Promise<string> => {
 // Help
 export const help = async (args: string[]): Promise<string> => {
   const commands = Object.keys(bin).sort().join(', ');
-  var c = '';
+  let c = '';
   for (let i = 1; i <= Object.keys(bin).sort().length; i++) {
     if (Object.keys(bin).sort()[i - 1] === 'langSetting') {
       continue;
@@ -62,7 +62,8 @@ export const lang = async (args: string[]): Promise<string> => {
   } else if ((args.length === 0 || args[0] === '') && langSetting === 'el') {
     return `Χρήση: lang [γλώσσα]. Παράδειγμα: lang es`;
   }
-  if (args[0].toLowerCase() === langSetting) {
+  let normalizedArgs = args[0].toLowerCase();
+  if (normalizedArgs === langSetting) {
     if (langSetting === 'es') {
       return `El idioma ya está establecido en español.`;
     } else if (langSetting === 'en') {
@@ -71,15 +72,15 @@ export const lang = async (args: string[]): Promise<string> => {
       return `Η γλώσσα έχει ήδη οριστεί στα ελληνικά.`;
     }
   }
-  if (args[0].toLowerCase() === 'es') {
+  if (normalizedArgs === 'es') {
     langSetting = 'es';
     return `Cambiando idioma a español...\n
     ${banner()}`;
-  } else if (args[0].toLowerCase() === 'en') {
+  } else if (normalizedArgs === 'en') {
     langSetting = 'en';
     return `Changing language to english...\n
     ${banner()}`;
-  } else if (args[0].toLowerCase() === 'el') {
+  } else if (normalizedArgs === 'el') {
     langSetting = 'el';
     return `Αλλαγή γλώσσας στα ελληνικά...\n
       ${banner()}`;
@@ -106,7 +107,7 @@ export const about = async (args: string[]): Promise<string> => {
 
 Más información sobre mi:
 'sumfetch' - resumen corto.
-'resume' - mi currículum.
+'resume' - mi currículum actualizado.
 'readme' - el README de mi perfil de GitHub.`;
   } else if (langSetting === 'en') {
     return `Hi, I am ${config.name}.
@@ -192,13 +193,14 @@ export const google = async (args: string[]): Promise<string> => {
       return `Χρήση: google [όρος ερώτησης]. Παράδειγμα: google πώς να γκουγκλάρω;`;
     }
   }
-  window.open(`https://google.com/search?q=${args.join(' ')}`);
+  let normalizedArgs = normalizeArgs(args);
+  window.open(`https://google.com/search?q=${normalizeArgs(args, true)}`);
   if (langSetting === 'es') {
-    return `Buscando '${args.join(' ')}' en Google...`;
+    return `Buscando '${normalizedArgs}' en Google...`;
   } else if (langSetting === 'en') {
-    return `Searching google for '${args.join(' ')}' ...`;
+    return `Searching google for '${normalizedArgs}' ...`;
   } else if (langSetting === 'el') {
-    return `Αναζήτηση '${args.join(' ')}' στο google...`;
+    return `Αναζήτηση '${normalizedArgs}' στο google...`;
   }
 };
 
@@ -212,13 +214,14 @@ export const duckduckgo = async (args: string[]): Promise<string> => {
       return `Χρήση: duckduckgo [όρος ερώτησης]. Παράδειγμα: duckduckgo ποιό είναι το νόημα της ζωής;`;
     }
   }
-  window.open(`https://duckduckgo.com/?q=${args.join(' ')}`);
+  const normalizedArgs = normalizeArgs(args);
+  window.open(`https://duckduckgo.com/?q=${normalizeArgs(args, true)}`);
   if (langSetting === 'es') {
-    return `Buscando '${args.join(' ')}' en DuckDuckGo...`;
+    return `Buscando '${normalizedArgs}' en DuckDuckGo...`;
   } else if (langSetting === 'en') {
-    return `Searching DuckDuckGo for '${args.join(' ')}'...`;
+    return `Searching DuckDuckGo for '${normalizedArgs}'...`;
   } else if (langSetting === 'el') {
-    return `Αναζήτηση '${args.join(' ')}' στο DuckDuckGo...`;
+    return `Αναζήτηση '${normalizedArgs}' στο DuckDuckGo...`;
   }
 };
 
@@ -232,19 +235,14 @@ export const bing = async (args: string[]): Promise<string> => {
       return `Χρήση: bing [όρος ερώτησης]. Παράδειγμα: bing ποιος χρησιμοποιεί bing;`;
     }
   }
-  window.open(`https://bing.com/search?q=${args.join(' ')}`);
+  let normalizedArgs = normalizeArgs(args);
+  window.open(`https://bing.com/search?q=${normalizeArgs(args, true)}`);
   if (langSetting === 'es') {
-    return `¿En serio? ¿Quién usa hoy en día Bing para buscar cosas sobre '${args.join(
-      ' ',
-    )}' ...`;
+    return `Buscando '${normalizedArgs}' en Bing...`;
   } else if (langSetting === 'en') {
-    return `Wow, really? Who uses Bing for searching about '${args.join(
-      ' ',
-    )}'?`;
+    return `Searching Bing for '${normalizedArgs}'...`;
   } else if (langSetting === 'el') {
-    return `Αλήθεια; Ποιος χρησιμοποιεί το Bing για να ψάξει για '${args.join(
-      ' ',
-    )}';`;
+    return `Αναζήτηση '${normalizedArgs}' στο Bing...`;
   }
 };
 
@@ -258,13 +256,14 @@ export const reddit = async (args: string[]): Promise<string> => {
       return `Χρήση: reddit [όρος ερώτησης]. Παράδειγμα: reddit C# εναντίον Java`;
     }
   }
-  window.open(`https://www.reddit.com/search/?q=${args.join(' ')}`);
+  let normalizedArgs = normalizeArgs(args);
+  window.open(`https://www.reddit.com/search/?q=${normalizeArgs(args, true)}`);
   if (langSetting === 'es') {
-    return `Buscando '${args.join(' ')}' en Reddit...`;
+    return `Buscando '${normalizedArgs}' en Reddit...`;
   } else if (langSetting === 'en') {
-    return `Searching Reddit for ${args.join(' ')} ...`;
+    return `Searching Reddit for '${normalizedArgs}'...`;
   } else if (langSetting === 'el') {
-    return `Αναζήτηση ${args.join(' ')} στο Reddit...`;
+    return `Αναζήτηση '${normalizedArgs}' στο Reddit...`;
   }
 };
 
@@ -272,14 +271,14 @@ export const reddit = async (args: string[]): Promise<string> => {
 export const echo = async (args: string[]): Promise<string> => {
   if (args.length === 0) {
     if (langSetting === 'es') {
-      return `Uso: echo [cadena]. Ejemplo: echo hola mundo!`;
+      return `Uso: echo [cadena]. Ejemplo: echo ¡hola mundo!`;
     } else if (langSetting === 'en') {
       return `Usage: echo [string]. Example: echo hello world!`;
     } else if (langSetting === 'el') {
       return `Χρήση: echo [string]. Παράδειγμα: echo γεια σου κόσμε!`;
     }
   }
-  return args.join(' ');
+  return normalizeArgs(args);
 };
 
 export const whoami = async (args: string[]): Promise<string> => {
@@ -476,3 +475,11 @@ export const banner = (args?: string[]): string => {
 - Πληκτρολογήστε 'lang' για να αλλάξετε τη γλώσσα. Οι υποστηριζόμενες γλώσσες είναι ES/EN/EL.
 `;
 };
+
+function normalizeArgs(args: string[], url: boolean = false): string {
+  args = args.map((arg) => arg.trim());
+  if (url) {
+    return encodeURIComponent(args.join(' '));
+  }
+  return args.join(' ');
+}

@@ -10,7 +10,8 @@ const sumfetch = async (args: string[]): Promise<string> => {
  SOBRE MÍ
 ----------------
  ${config.name}
-<span>Estudiante de Grado Superior de Desarrollo de Aplicaciones Web</span>
+<span>Técnico Superior en Desarrollo de Aplicaciones Web</span>
+<span>Trabajo como desarrollador backend en GFitSoft.</span>
  <u><a href="${config.resume_url}" target="_blank">Curriculum</a></u>
 爵 <u><a href="${config.repo}" target="_blank">Repositorio de esta página</a></u>
 
@@ -29,7 +30,8 @@ const sumfetch = async (args: string[]): Promise<string> => {
  ABOUT
 ----------------
  ${config.name}
-<span>Web development student</span>
+<span>Web developer</span>
+<span>I'm working at GFitSoft as a backend dev.</span>
  <u><a href="${config.resume_url}" target="_blank">Resume</a></u>
 爵 <u><a href="${config.repo}" target="_blank">This website's repo</a></u>
 
@@ -48,7 +50,8 @@ const sumfetch = async (args: string[]): Promise<string> => {
  ΓΙΑ ΜΕΝΑ
 ----------------
  ${config.name}
-<span>Φοιτητής Ανάπτυξης Ιστοσελίδων</span>
+<span>Προγραμματιστής ιστοσελίδων</span>
+<span>Εργάζομαι στην GFitSoft ως backend dev.</span>
  <u><a href="${config.resume_url}" target="_blank">Βιογραφικό</a></u>
 爵 <u><a href="${config.repo}" target="_blank">Αποθετήριο αυτής της ιστοσελίδας</a></u>
 
